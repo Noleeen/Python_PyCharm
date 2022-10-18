@@ -39,32 +39,74 @@
 # 13. напишите программу в которой пользователь будет задавать две строки,
 # а программа будет определять количество вхождений одной строки в другой
 
+#
 # n = input('enter string: ')
 # n1 = input('enter string: ')
 #
-# print(n.count(n1) or n1.count(n))
+# if len(n) > len(n1):
+#     count = 0
+#     step = len(n1)
+#     i = 0
+#     while i < len(n):
+#         if n[i:step + i] == n1:
+#             count += 1
+#         i += 1
+#     print(count)
+#
+#
+# elif len(n1) > len(n):
+#     count = 0
+#     step = len(n)
+#     i = 0
+#     while i < len(n1):
+#         if n1[i:step + i] == n:
+#             count += 1
+#         i += 1
+#     print(count)
 
+#------------------------------------------------
+# Программа по заданному номеру четверти показывает диапазон возможных координат точек в этой четверти
 
-n = input('enter string: ')
-n1 = input('enter string: ')
+# def diapason(num):
+#     if num == 1:
+#         print('x>0 y>0')
+#     elif num == 2:
+#         print('x<0 y>0')
+#     elif num == 3:
+#         print('x<0 y<0')
+#     elif num == 4:
+#         print('x>0 y<0')
+#     else:
+#         print('введите четверть от 1 до 4')
+#
+# try:
+#     n = int(input('input number of quarter '))
+#     diapason(n)
+# except:
+#     print('ввдено не чісло')
 
-if len(n) > len(n1):
-    count = 0
-    step = len(n1)
-    i = 0
-    while i < len(n):
-        if n[i:step + i] == n1:
-            count += 1
-        i += 1
-    print(count)
+# расстояние между двумя точками
 
+dim = int(input('enter the amount of coordinates '))
+def create_list(dim):
+    arr = [0]*dim
+    for i in range(dim):
+        try:
+            arr[i] = float(input(f'input coordinate {i+1} '))
+        except:
+            print('нужно вводить вещественное число')
+    return arr
 
-elif len(n1) > len(n):
-    count = 0
-    step = len(n)
-    i = 0
-    while i < len(n1):
-        if n1[i:step + i] == n:
-            count += 1
-        i += 1
-    print(count)
+def find_distance(a,b):
+    sum = 0
+    for i in range(len(a)):
+        sum = sum + (a[i]-b[i])**2
+    distance = sum**0.5
+    return distance
+
+a = create_list(dim)
+b = create_list(dim)
+print(a)
+print(b)
+print(find_distance(a,b))
+
