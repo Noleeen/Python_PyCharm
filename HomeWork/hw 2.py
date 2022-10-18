@@ -47,5 +47,28 @@
 #         i += 1
 #     print(count)
 
+#------------------------------------------------------
+#Задача 4 НЕОБЯЗАТЕЛЬНАЯ. Напишите программу, которая принимает на вход N,
+# и координаты двух точек и находит расстояние между ними в N-мерном пространстве.
 
+dim = int(input('enter the amount of coordinates '))
+def create_list(dim):
+    # arr = [0]*dim
+    arr = []
+    for i in range(dim):
+        try:
+            arr.append(float(input(f'input coordinate {i+1} ')))
+            # arr[i] = float(input(f'input coordinate {i+1} '))
+        except:
+            print('нужно вводить вещественное число')
+    return arr
+def find_distance(a,b):
+    sum = 0
+    for i in range(len(a)):
+        sum = sum + (a[i]-b[i])**2
+    distance = sum**0.5
+    return distance
+a = create_list(dim)
+b = create_list(dim)
 
+print(find_distance(a,b))
