@@ -12,6 +12,15 @@
 #         num = num // 10
 #     print(f'sum digits = {temp}')
 
+# решеніе с пом строкі
+# n = input()
+# s = 0
+# for i in n:
+#     if i.isdigit():
+#         s += int(i)
+# print(s)
+
+# ----------------------------------------------------------------------
 # Задача 2. Напишите программу, которая принимает на вход число N и выдает набор произведений чисел от 1 до N
 
 # num = int(input('enter number '))
@@ -47,28 +56,55 @@
 #         i += 1
 #     print(count)
 
-#------------------------------------------------------
-#Задача 4 НЕОБЯЗАТЕЛЬНАЯ. Напишите программу, которая принимает на вход N,
+# задайте список из N элементов, заполненных числами из промежутка [-N:N].
+# Найдите произведение элементов на указанных позициях. Позиции хранятся в файле file.txt в дной строке одно число
+
+import random
+
+n = int(input())
+l = []
+for _ in range(n):
+    l.append(random.randint(-n, n))
+print(l)
+with open('file2.txt', 'w', encoding='utf-8') as f:
+    for _ in range(random.randint(1, n)):
+        f.write(str(random.randint(0, n - 1)) + '\n')
+fact = 1
+with open('file2.txt', 'r', encoding='utf-8') as rf:
+    n_rf = rf.read().splitlines()
+    for i in n_rf:
+        fact *= l[int(i)]
+print(fact)
+
+exit()
+# ------------------------------------------------------
+# Задача 4 НЕОБЯЗАТЕЛЬНАЯ. Напишите программу, которая принимает на вход N,
 # и координаты двух точек и находит расстояние между ними в N-мерном пространстве.
 
 dim = int(input('enter the amount of coordinates '))
+
+
 def create_list(dim):
     # arr = [0]*dim
     arr = []
     for i in range(dim):
         try:
-            arr.append(float(input(f'input coordinate {i+1} ')))
+            arr.append(float(input(f'input coordinate {i + 1} ')))
             # arr[i] = float(input(f'input coordinate {i+1} '))
         except:
             print('нужно вводить вещественное число')
     return arr
-def find_distance(a,b):
+
+
+def find_distance(a, b):
     sum = 0
     for i in range(len(a)):
-        sum = sum + (a[i]-b[i])**2
-    distance = sum**0.5
+        sum = sum + (a[i] - b[i]) ** 2
+    distance = sum ** 0.5
     return distance
+
+
 a = create_list(dim)
 b = create_list(dim)
 
-print(find_distance(a,b))
+print(find_distance(a, b))
