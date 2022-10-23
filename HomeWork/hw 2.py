@@ -59,22 +59,63 @@
 # задайте список из N элементов, заполненных числами из промежутка [-N:N].
 # Найдите произведение элементов на указанных позициях. Позиции хранятся в файле file.txt в дной строке одно число
 
-import random
+# import random
+#
+# n = int(input())
+# l = []
+# for _ in range(n):
+#     l.append(random.randint(-n, n))
+# print(l)
+# with open('file2.txt', 'w', encoding='utf-8') as f:
+#     for _ in range(random.randint(1, n)):
+#         f.write(str(random.randint(0, n - 1)) + '\n')
+# fact = 1
+# with open('file2.txt', 'r', encoding='utf-8') as rf:
+#     n_rf = rf.read().splitlines()
+#     for i in n_rf:
+#         fact *= l[int(i)]
+# print(fact)
 
-n = int(input())
-l = []
-for _ in range(n):
-    l.append(random.randint(-n, n))
-print(l)
-with open('file2.txt', 'w', encoding='utf-8') as f:
-    for _ in range(random.randint(1, n)):
-        f.write(str(random.randint(0, n - 1)) + '\n')
-fact = 1
-with open('file2.txt', 'r', encoding='utf-8') as rf:
-    n_rf = rf.read().splitlines()
-    for i in n_rf:
-        fact *= l[int(i)]
-print(fact)
+
+# -------------------------------------------------------
+# Реалізуйте алгорітм перемешіванія спіска
+
+# способ с методом
+# import random
+# some_list = [3, 4, 56, 2, 1, 1234, 33, 'sdf']
+# random.shuffle(some_list)
+# print(some_list)
+
+# алгоритмом
+# import random
+# some_list = [3, 4, 56, 2, 1, 1234, 33, 'sdf']
+# for _ in range(random.randint(1,10)): # количество перемешиваний - случайное число от 1 до 10
+#     i1 = random.randint(0, len(some_list) - 1)
+#     i2 = random.randint(0, len(some_list) - 1)
+#     some_list[i1], some_list[i2] =some_list[i2], some_list[i1]
+#     print(f'{i1}\n {i2}\n{some_list}')
+
+#  случайные из time
+
+import time
+now = time.time()
+a = int(now % 1 * 10000000000) # полчуаем из time случайное число, которое обновляется каждую миллионную миллисекунду
+b = a % (20-3)+3 # получаем случайное число из диапазона от 3 до 20 не включая 20
+print(now)
+print(a)
+print(b)
+i = int(str(time.time()).split('.')[1]) % (20-3) + 3 # тоже самое только в одну строчку
+print(i)
+
+some_list = [3, 4, 56, 2, 1, 1234, 33, 'sdf']
+for _ in range(int(str(time.time()).split('.')[1]) % (10-5)+5): # количество перемешиваний - случайное число от 5 до 10
+    i1 = int(str(time.time()).split('.')[1]) % 7
+    time.sleep(0.01)
+    i2 = int(str(time.time()).split('.')[1]) % 7
+    some_list[i1], some_list[i2] =some_list[i2], some_list[i1]
+    print(f'{i1}\n {i2}\n{some_list}')
+
+
 
 exit()
 # ------------------------------------------------------
