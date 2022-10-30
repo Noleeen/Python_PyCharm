@@ -31,14 +31,43 @@
 # задача 2 . Задайте последовательность чисел. Напишите программу,
 # которая выведет список неповторяющихся элементов исходной последовательности.
 
-try:
-    user_list = [int(input('enter list\'s number: ')) for _ in range(int(input('enter list\'s length: ')))]
-except ValueError as er:
-    print(f'error enter - {er}. repead enter')
+# try:
+#     user_list = [int(input('enter list\'s number: ')) for _ in range(int(input('enter list\'s length: ')))]
+# except ValueError as er:
+#     print(f'error enter - {er}. repead enter')
+#
+# a = set()
+# for el in user_list:
+#     a.add(el)
+#
+# print(user_list)
+# print(a
 
-a = set()
-for el in user_list:
-    a.add(el)
+# задача 3. Задана натуральная степень k. Сформировать случайным образом список коэффициентов
+# (значения от 0 до 100) многочлена и записать в файл многочлен степени k.
 
-print(user_list)
-print(a)
+def input_int_num():
+    check = True
+    while check:
+        try:
+            a = int(input('enter integer number: '))
+            check = 0
+        except ValueError as er:
+            print(f'enter Error: {er} \n repeat enter')
+    return a
+
+from random import randint as r
+u = input_int_num()
+
+l = []
+x = 1
+for i in range(u+1):
+    l.append(f'{r(0,100)} * x^{u}')
+    u -=1
+
+polynomial = ' + '.join(l) + ' = 0'
+
+with open ('file3.txt', 'w') as pol:
+    pol.write(polynomial)
+
+
