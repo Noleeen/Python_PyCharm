@@ -45,7 +45,7 @@ def win(l):
                 win = 0
     if l[0][0] == l[1][1] == l[2][2] or l[2][0] == l[1][1] == l[0][2]:
         win = 1
-    elif '-' not in l:
+    elif '-' not in l[1] + l[2] + l[0]:
         win = 2
     else:
         win = 0
