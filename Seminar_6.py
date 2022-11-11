@@ -152,7 +152,7 @@ def comp(l):
         if '-' == l[1][1]:
             moveC = (1, ind1)
         if '-' == l[0][2]:
-            moveC = (2, ind1)
+            moveC = (0, ind1)
         return moveC
 
     elif (a1.count('O') == 2 or a1.count('X') == 2) and '-' in a1:
