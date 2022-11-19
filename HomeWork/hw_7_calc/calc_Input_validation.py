@@ -1,5 +1,4 @@
 def input_valid(strr):
-    strr = strr.replace(' ', '')
     strr = strr.replace('i', 'j')
     a = strr.replace('j', '')
     for el in a:
