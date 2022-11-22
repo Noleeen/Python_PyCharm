@@ -9,6 +9,6 @@ import csv
 
 # считываем в виде словаря
 with open('csv_1.csv',newline='') as r:
-    re = csv.DictReader(r)
+    re = csv.DictReader(r,delimiter = ';')
     for i in re:
         print(i['first'], i['second'])
