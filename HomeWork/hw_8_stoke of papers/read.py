@@ -42,3 +42,11 @@ def find_data(data_json, find):
                     if id == j['id']:
                         print(j['last arrival'], j['balance'])
 
+def edit_stock(data_json, new_dict, edit_id):
+    l = data_json['stock']
+    for j in range(len(l)):
+        if edit_id == l[j]['id']:
+            l[j] = new_dict
+            print(l[j])
+    print('edits applied')
+
