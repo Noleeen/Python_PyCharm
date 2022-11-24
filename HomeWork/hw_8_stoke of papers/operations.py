@@ -1,4 +1,5 @@
 import json
+import view
 
 def read_data(file):
     with open(file) as r:
@@ -42,11 +43,17 @@ def find_data(data_json, find):
                     if id == j['id']:
                         print(j['last arrival'], j['balance'])
 
-def edit_stock(data_json, new_dict, edit_id):
+def edit_stock(data_json, edit_id):
     l = data_json['stock']
     for j in range(len(l)):
         if edit_id == l[j]['id']:
+            new_dict = view.edit_copy_paste(l[j])
             l[j] = new_dict
+            print('edits applied:')
             print(l[j])
-    print('edits applied')
+            return data_json['paper'], l
+        else:
+            print(f'id {edit_id} not found')
 
+def delete(data_json, delete_id):
+    pass
