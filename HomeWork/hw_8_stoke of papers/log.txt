@@ -1,0 +1,14 @@
+2022-11-25 11:25:14.044506 : add new data - id: 0005
+2022-11-25 11:35:11.482154 : add new data - id: 0006
+2022-11-25 12:01:47.225049 : delete data - id: 0005
+2022-11-25 12:12:37.959800 : delete data - id: 0006
+2022-11-25 12:39:13.950034 : add new data - id: 0005
+2022-11-25 13:04:02.340821 : edit data - id: 0005
+ old_data: {'last arrival': '22/10/2022', 'balance': '620', 'id': '0005'}
+ new_data: {'last arrival': '22/10/2022', 'balance': '620', 'id': '0005'}
+2022-11-25 13:04:42.883710 : edit data - id: 0005
+ old_data: {'last arrival': '20/10/22', 'balance': '620 sheets', 'id': '0005'}
+ new_data: {'last arrival': '20/10/22', 'balance': '620 sheets', 'id': '0005'}
+2022-11-25 13:25:11.842376 : edit data - id: 0003
+ old_data: {'last arrival': '15/11/22', 'balance': '2000 sheets', 'id': '0003'}
+ new_data: {'last arrival': '20/11/22', 'balance': '1000', 'id': '0003'}

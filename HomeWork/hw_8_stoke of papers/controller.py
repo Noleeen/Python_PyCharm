@@ -19,18 +19,18 @@ def run_paper_stock():
             edit_id = view.edit_id()
             data = op.edit_stock(data_json, edit_id)
             op.write_edit_data(data, 'paper_stock.json')
-        elif run == 'd': # запрашиваем у пользователя id для удаления, удаляем все данные с этим id, перезаписываем файл
+        elif run == 'd': # запрашиваем у пользователя id для удаления, показываем ему строку, которую он собирается удалить и уточняем, точно ли он собирается её удалить, затем удаляем все данные с этим id, перезаписываем файл
             del_id = view.delete_id()
-            if del_id == 0:
+            data = op.delete(data_json,del_id)
+            if data == False:
                 continue
-            else:
-                data = op.delete(data_json,del_id)
-                op.write_edit_data(data, 'paper_stock.json')
+            op.write_edit_data(data, 'paper_stock.json')
         elif run == 'l':
-            log = op.read_data('log.txt')
-            print(log)
+            log = op.read_log('log.txt')
         elif run == 'q': # quit - выходим из цикла
             check = not check
+        else:
+            print("command entered incorrectly, repeat enter, please.\n")
 
 
 
