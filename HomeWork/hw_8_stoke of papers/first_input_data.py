@@ -1,6 +1,12 @@
 import json
 
 def add_data(data,file):
+    """
+    функция вносит первичные данные, в согласованном с заказчиком виде, в файл, перед предачей программы заказчику
+
+    функция принимает данные {data} и записывает их в файл с путём {file}
+
+    """
     data = json.dumps(data)
     data = json.loads(str(data))
     with open(file, 'w', encoding= 'utf-8') as w:
