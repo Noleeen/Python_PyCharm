@@ -7,6 +7,8 @@ bot = telebot.TeleBot(API_TOKEN)
 
 films = []
 
+calc_start = False
+
 def save():
     with open("films.json", 'w', encoding= 'utf-8') as f:
         f.write(json.dumps(films, ensure_ascii=False))
@@ -39,21 +41,27 @@ def start_message(message):
 def start_message(message):
     bot.send_message(message.chat.id,' '.join(films))
 
-@bot.message_handler(commands=['calc']) # запрос в одну строчку с командой
+# @bot.message_handler(commands=['calc']) # запрос в одну строчку с командой
+# def calc_message(message):
+#     eq = message.text.split()
+#     bot.send_message(message.chat.id, eval(eq[1]))
+
+@bot.message_handler(commands=['calc'])
 def calc_message(message):
-    eq = message.text.split()
-    bot.send_message(message.chat.id, eval(eq[1]))
+    # eq = message.text.split()
+    global calc_start
+    calc_start = True
+    bot.send_message(message.chat.id, "введите выражение для вычислений")
 
 
-@bot.message_handler(commands=['c'])
-def calc_message(message):
-    eq = message.text.split()
-    bot.send_message(message.chat.id, eval(eq[1]))
 
 @bot.message_handler(content_types='text') # обработка ботом тестовой информации
 def messag_reply(message):
+    global calc_start
     if 'привет' in message.text:
         bot.send_message(message.chat.id,'соберись уже!')
-
+    if calc_start:
+        bot.send_message(message.chat.id, eval(message.text))
+        calc_start = False
 
 bot.polling()
