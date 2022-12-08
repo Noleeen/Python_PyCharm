@@ -46,28 +46,33 @@
 # задача 3. Задана натуральная степень k. Сформировать случайным образом список коэффициентов
 # (значения от 0 до 100) многочлена и записать в файл многочлен степени k.
 
-def input_int_num():
-    check = True
-    while check:
-        try:
-            a = int(input('enter integer number: '))
-            check = 0
-        except ValueError as er:
-            print(f'enter Error: {er} \n repeat enter')
-    return a
+# def input_int_num():
+#     check = True
+#     while check:
+#         try:
+#             a = int(input('enter integer number: '))
+#             check = 0
+#         except ValueError as er:
+#             print(f'enter Error: {er} \n repeat enter')
+#     return a
+#
+# from random import randint as r
+# u = input_int_num()
+#
+# l = []
+# x = 1
+# for i in range(u+1):
+#     l.append(f'{r(0,100)} * x^{u}')
+#     u -=1
+#
+# polynomial = ' + '.join(l) + ' = 0'
+#
+# with open ('file3.txt', 'w') as pol:
+#     pol.write(polynomial)
 
-from random import randint as r
-u = input_int_num()
+# задача 4 необязательная. НА ВХОДЕ ИМЕННО СТРОКА! Найдите корни квадратного уравнения,
+# уравнение вводит через строку пользователь. например, 6*x^2+5*x+6=0 .
+# Само собой, уравнение может и не иметь решения. Предусмотреть все варианты, сделать обработку исключений.
 
-l = []
-x = 1
-for i in range(u+1):
-    l.append(f'{r(0,100)} * x^{u}')
-    u -=1
-
-polynomial = ' + '.join(l) + ' = 0'
-
-with open ('file3.txt', 'w') as pol:
-    pol.write(polynomial)
-
-
+s= lambda x,y: x +y
+print(s(2,3))

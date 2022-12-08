@@ -95,25 +95,36 @@
 #     some_list[i1], some_list[i2] =some_list[i2], some_list[i1]
 #     print(f'{i1}\n {i2}\n{some_list}')
 
-#  случайные из time
+#  случайные из time!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-import time
-now = time.time()
-a = int(now % 1 * 10000000000) # полчуаем из time случайное число, которое обновляется каждую миллионную миллисекунду
-b = a % (20-3)+3 # получаем случайное число из диапазона от 3 до 20 не включая 20
-print(now)
-print(a)
-print(b)
-i = int(str(time.time()).split('.')[1]) % (20-3) + 3 # тоже самое только в одну строчку
-print(i)
+# import time
+# now = time.time()
+# a = int(now % 1 * 10000000000) # полчуаем из time случайное число, которое обновляется каждую миллионную миллисекунду
+# b = a % (20-3)+3 # получаем случайное число из диапазона от 3 до 20 не включая 20
+# print(now)
+# print(a)
+# print(b)
+# i = int(str(time.time()).split('.')[1]) % (20-3) + 3 # тоже самое только в одну строчку
+# print(i)
+#
+# some_list = [3, 4, 56, 2, 1, 1234, 33, 'sdf']
+# for _ in range(int(str(time.time()).split('.')[1]) % (10-5)+5): # количество перемешиваний - случайное число от 5 до 10
+#     i1 = int(str(time.time()).split('.')[1]) % 7
+#     time.sleep(0.01)
+#     i2 = int(str(time.time()).split('.')[1]) % 7
+#     some_list[i1], some_list[i2] =some_list[i2], some_list[i1]
+#     print(f'{i1}\n {i2}\n{some_list}')
 
-some_list = [3, 4, 56, 2, 1, 1234, 33, 'sdf']
-for _ in range(int(str(time.time()).split('.')[1]) % (10-5)+5): # количество перемешиваний - случайное число от 5 до 10
-    i1 = int(str(time.time()).split('.')[1]) % 7
-    time.sleep(0.01)
-    i2 = int(str(time.time()).split('.')[1]) % 7
-    some_list[i1], some_list[i2] =some_list[i2], some_list[i1]
-    print(f'{i1}\n {i2}\n{some_list}')
+
+#------------------------------------------------------------
+# странная работа метода count
+# s_l = list(map(int, input('enter list via space: ').split()))
+# rez_l = []
+# for i in range(len(s_l)):
+#     if s_l.count(i) == True:
+#         rez_l.append(i)
+# print(rez_l)
+
 
 
 
