@@ -1,6 +1,11 @@
 from aiogram import Bot,Dispatcher, executor, types
 from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton
 from config_r import config
+import nolik
+
+import time
+import random
+
 
 bot = Bot(token=config.bot_token.get_secret_value())
 dp = Dispatcher(bot)
@@ -42,10 +47,33 @@ async def com_2_players(message: types.Message):
 
 @dp.message_handler(commands=['play_with_bot'])
 async def com_play_with_bot(message: types.Message):
-    await message.answer('ok, let\'s go!')
-    await message.answer(list_print(game_list), reply_markup=kb_xo_play)
-    game_list[8] = 'X'
-    await message.answer(list_print(game_list), reply_markup=kb_xo_play)
+    await message.answer('ok, let\'s go!',reply_markup= kb_xo_play)
+    r = random.randint(0, 1)
+    check = 0
+    move = 'X'
+    while not check:
+        if r:
+            time.sleep(10)
+            # await message.answer(list_print(game_list), reply_markup=kb_xo_play)
+
+            @dp.message_handler(commands=['/0'])
+            async def com_0(message: types.Message):
+                game_list[0] = move
+                # await message.delete()
+                await message.answer(list_print(game_list))
+            @dp.message_handler(commands=['/1'])
+            async def com_1(message: types.Message):
+                game_list[1] = move
+                # await message.delete()
+                await message.answer(list_print(game_list))
+        else:
+            game_list[nolik.comp(game_list)] = move
+            await message.answer(list_print(game_list))
+        if move == 'X':
+            move = '0'
+        else:
+            move = 'X'
+        r = not r
 
 if __name__ == '__main__':
     executor.start_polling(dp, on_startup=on, skip_updates= True)
