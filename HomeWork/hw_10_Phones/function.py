@@ -46,3 +46,29 @@ def add_new(data_json, file, new_data, new_id):
     with open(file, 'w', encoding='utf-8') as w:
         json.dump(data_json, w, ensure_ascii=False, indent=2)
 
+def find(data_json, find_data):
+    for k in data_json.keys():
+        if k == find_data:
+            data = f'<b>{k}</b>: \n ' \
+                   f'phones: {data_json[k]["phones"]}\n ' \
+                   f'adress: {data_json[k]["adress"]}\n ' \
+                   f'birthday: {data_json[k]["birthday"]}\n ' \
+                   f'e-mail: {data_json[k]["e-mail"]}\n' \
+                   f'id: {data_json[k]["id"]}'
+            return data
+    else:
+        return 'заданное значение не найдено'
+
+
+def edit(data_json, edit_data):
+    for k in data_json.keys():
+        if k == edit_data:
+            data = f'{k} ' \
+                   f'{data_json[k]["phones"]} ' \
+                   f'{data_json[k]["adress"]} ' \
+                   f'{data_json[k]["birthday"]} ' \
+                   f'{data_json[k]["e-mail"]}'
+            return data
+
+
+

@@ -39,7 +39,21 @@ def generate_id(data_json):
 
 
 
+def edit(data_json, edit_data):
+    for k in data_json.keys():
+        if k == edit_data:
+            data = f'{k} ' \
+                   f'{data_json[k]["phones"]} ' \
+                   f'{data_json[k]["adress"]} ' \
+                   f'{data_json[k]["birthday"]} ' \
+                   f'{data_json[k]["e-mail"]}'
+            return data
 
-print(generate_id(read_data('phones.json')))
+d = read_data('phones.json')
+
+f = edit(d, 'Паша')
+f = f.split()
+new_id = d[f[0]]['id']
+print(d['Паша']['id'])
 # print(pars(print_all(read_data('phones.json'))))
 
