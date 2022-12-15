@@ -1,4 +1,5 @@
 import json
+import pprint
 
 phones = {'Силик':
               {'phones': ['123','54567'],
@@ -12,17 +13,33 @@ phones = {'Силик':
                'e-mail' : 'sd@tut.by',
                 'id' : '0001'}}
 
-print(phones['Силик'])
-print(phones['Силик']['adress'])
-print(len(phones['Паша']['phones']))
-
-def load(data, file):
-    data = json.dumps(data)
-    data = json.loads(str(data))
-    with open(file, 'w', encoding='utf-8') as w:
-        json.dump(data, w, ensure_ascii=False, indent=2)
+# print(phones['Силик'])
+# print(phones['Силик']['adress'])
+# print(len(phones['Паша']['phones']))
 
 
 
 
-load(phones, 'phones.json')
+
+
+def read_data(file):
+    with open(file, 'r', encoding='utf-8') as r:
+        read = json.load(r)
+    return read
+
+
+def generate_id(data_json):
+    a = []
+    for i in data_json:
+        a.append(int(data_json[i]['id']))
+        new_id = f'{(max(a) + 1):04}'
+    return new_id
+
+
+
+
+
+
+print(generate_id(read_data('phones.json')))
+# print(pars(print_all(read_data('phones.json'))))
+

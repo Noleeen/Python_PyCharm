@@ -17,6 +17,13 @@
     "adress": "Лондон",
     "birthday": "13.05.1986",
     "e-mail": "sd@tut.by",
-    "id": "0001"
+    "id": "0002"
+  },
+  "Тоха": {
+    "phones": "5846",
+    "adress": "Варшава",
+    "birthday": "30.03.1985",
+    "e-mail": "sddf@tut.by",
+    "id": "0003"
   }
 }
