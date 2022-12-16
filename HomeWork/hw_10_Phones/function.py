@@ -59,6 +59,19 @@ def find(data_json, find_data):
     else:
         return 'заданное значение не найдено'
 
+def delete(data_json, find_data,file):
+    check = 0
+    for k in data_json.keys():
+        if k == find_data:
+            data_json.pop(k, 'deleted')
+            with open(file, 'w', encoding='utf-8') as w:
+                json.dump(data_json, w, ensure_ascii=False, indent=2)
+
+            check = 1
+            return 'контакт удалён'
+    if check == 0:
+        return 'заданное значение не найдено'
+
 
 def edit(data_json, edit_data):
     for k in data_json.keys():

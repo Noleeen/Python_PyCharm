@@ -35,7 +35,9 @@ def main_menu(message):
         msg = bot.send_message(message.chat.id, new)
         bot.register_next_step_handler(msg, view_edit_contact)
     elif message.text == 'Delete contact':
-        pass
+        new = 'Введите имя'
+        msg = bot.send_message(message.chat.id, new)
+        bot.register_next_step_handler(msg, delete_contact)
     elif message.text == 'Exit':
         bot.send_message(message.chat.id, 'see you again',
                          reply_markup=k.close)
@@ -57,6 +59,28 @@ def find_contact(message):
     msg = bot.send_message(message.chat.id, find, parse_mode = "HTML",
                            reply_markup=k.kb_menu)
     bot.register_next_step_handler(msg, main_menu)
+
+def delete_contact(message):
+    global del_cont
+    del_cont = message.text
+    data_json = f.read_data('phones.json')
+    find = f.find(data_json, del_cont)
+    msg = bot.send_message(message.chat.id, f'{find} \n <b>Удалить контакт?</b>', parse_mode = "HTML",
+                           reply_markup=k.kb_del)
+    bot.register_next_step_handler(msg, delete_confirmation)
+
+def delete_confirmation(message):
+    if message.text == 'Yes':
+        data_json = f.read_data('phones.json')
+        del_c = f.delete(data_json, del_cont,'phones.json')
+        msg = bot.send_message(message.chat.id, del_c, parse_mode="HTML",
+                               reply_markup=k.kb_menu)
+        bot.register_next_step_handler(msg, main_menu)
+    else:
+        msg = bot.send_message(message.chat.id, 'выберите опцию:',
+                               reply_markup=k.kb_menu)
+        bot.register_next_step_handler(msg, main_menu)
+
 
 def view_edit_contact(message):
     l = message.text
